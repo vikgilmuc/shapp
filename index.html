@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta charset="UTF-8"><head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>Smiley-homes App</title>
+		
+	
+		<link rel="stylesheet" href="css/shapp.shell.css" type="text/css"/>	
+		<link rel="stylesheet" href="css/shapp.content.css" type="text/css"/>	
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+		
+	
+		<link rel="stylesheet" href="css/shapp.css" type="text/css"/>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="js/jq/jquery.uriAnchor-1.1.3.js"></script>
+		<script src="js/jq/jquery.json-2.4.js"></script>
+		<script src="js/jq/jquery.mobile-1.4.2.min.js"></script>
+		<script src='js/ko/knockout-3.1.0.js' type='text/javascript'></script>
+		<script src="js/shapp.js"></script>
+		<noscript>Your browser does not support JavaScript or it's not activated! It's esential !!  </noscript>
+		
+		
+	<script>
+	
+		$(function () { 	
+			
+			shapp.initModule( $('#shapp') ); 
+										
+			});
+		</script>
+	</head>
+	
+	<body>
+	<div id="shapp">
+		
+		<div data-role="page">
+
+			<div data-role="header">
+			
+			</div><!-- /header -->
+
+			<div data-role="content">	
+				<section data-bind="foreach: article">
+					<div data-bind="html: introtext"></div>
+				</section>	
+			</div><!-- /content -->
+
+			<div data-role="footer" data-id="foo1" data-position="fixed">		
+				<div data-role="navbar">
+					<ul>		<!-- patch done to solve problem loading DOM with jQuery Mobile +knockout http://www.scottlogic.com/blog/2012/10/23/integrating-knockout-and-jquerymobile.html-->
+						<li><a href="#home">Home</a></li>
+						<li><a href="#projekt_zirl">Zirl</a></li>
+						<li><a href="#lage">Lage</a></li>
+						<li><a href="#wohnungen">Wohnungen</a></li>
+					</ul>		
+					<!--<li data-bind="foreach: article">
+						<a href="#" data-bind="text: title"></a>
+					</li> -->
+		
+				</div><!-- /navbar -->
+			</div><!-- /footer -->	
+			
+		</div><!-- /page -->
+		
+	</body>
+</html>
