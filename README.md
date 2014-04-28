@@ -19,8 +19,15 @@ It works!!, vikgilmuc.no-ip.org/Apps/sh/
  Next steps to be done during the day 28-04-2014: 	
 	- Menu basic functionality (urgent)
 	- URL Routing 
-	- Slide the pages
+	- Slide the pages 
 	
-   
+ v.0.2
+ 
+    Menu basic functionality (urgent) Solved
+    Url routing -- thanks to jQM
+    
+    ToDo's 
+    - Slides.
+    -gallery!!!   
 
 

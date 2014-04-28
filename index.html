@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8"><head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<title>Smiley-homes App</title>
 		
 	
@@ -25,44 +25,87 @@
 	<script>
 	
 		$(function () { 	
-			
-			shapp.initModule( $('#shapp') ); 
+			ko.virtualElements.allowedBindings.jqmforeach = true;
+        ko.bindingHandlers.jqmforeach = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+
+        return ko.bindingHandlers['foreach']['init'](element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+    },
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+
+        var output = ko.bindingHandlers['foreach']['update'](element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+
+        if ($.mobile.activePage) {
+            $.mobile.activePage.trigger('pagecreate');
+        }
+
+        var listview = null;
+
+        if (element.nodeType == 8) {
+            if (element.parentNode.tagName.toLowerCase() == 'ul' && element.parentNode.getAttribute('data-role') == 'listview')
+                listview = element.parentNode;
+        } else if (element.hasAttribute('data-role') && element.getAttribute('data-role') == 'listview')
+            listview = element;
+
+        if (listview) {
+            try {
+                $(listview).listview('refresh');
+            } catch (e) {
+                try { $(listview).listview(); } catch (e) { };
+            }
+        }
+
+        var properties = allBindingsAccessor().jmforeach;
+        if (properties) {
+            if (properties['onRendered']) {
+                var value = valueAccessor();
+                properties['onRendered'](element, value.data ? value.data : value);
+            }
+
+        }
+
+        return output;
+    }
+};
+			shapp.initModule( $('body') ); 
 										
 			});
 		</script>
 	</head>
 	
 	<body>
-	<div id="shapp">
+	
 		
-		<div data-role="page">
-
-			<div data-role="header">
+		<!-- ko jqmforeach: article -->
+		<div data-role="page" data-bind="attr: {id:title,'data-title':title}">
+            <div data-role="header" >
+                <h1 data-bind="text: title"></h1>
+            </div><!-- /header -->
+        
+            <div data-role="content" data-bind="html: introtext">   
+                
+            </div><!-- /content -->
+      
+            <div data-role="footer" data-id="foo1" data-position="fixed">   
+            <div data-role="navbar">
+                <ul>
+                    <li ><a href="#Home2">Home</a></li> 
+                    <li ><a href="#Zirl">Zirl</a></li> 
+                    <li ><a href="#Wohnungen">Wohnungen</a></li> 
+                    <li ><a href="#Lage">Lage</a></li>
+                     
+                       
+                    
+                </ul>
+                
+                </div>
+                </div>  <!--/footer -->
 			
-			</div><!-- /header -->
-
-			<div data-role="content">	
-				<section data-bind="foreach: article">
-					<div data-bind="html: introtext"></div>
-				</section>	
-			</div><!-- /content -->
-
-			<div data-role="footer" data-id="foo1" data-position="fixed">		
-				<div data-role="navbar">
-					<ul>		<!-- patch done to solve problem loading DOM with jQuery Mobile +knockout http://www.scottlogic.com/blog/2012/10/23/integrating-knockout-and-jquerymobile.html-->
-						<li><a href="#home">Home</a></li>
-						<li><a href="#projekt_zirl">Zirl</a></li>
-						<li><a href="#lage">Lage</a></li>
-						<li><a href="#wohnungen">Wohnungen</a></li>
-					</ul>		
-					<!--<li data-bind="foreach: article">
-						<a href="#" data-bind="text: title"></a>
-					</li> -->
-		
-				</div><!-- /navbar -->
-			</div><!-- /footer -->	
 			
 		</div><!-- /page -->
+		<!-- /ko -->	
 		
+		
+        
 	</body>
 </html>
