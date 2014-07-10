@@ -28,9 +28,12 @@ var shapp = (function () {
 						$.toJSON(datenforbinding);
 						console.log(datenforbinding);// to control / to be eliminated
 						ko.applyBindings(datenforbinding);
-						$.mobile.changePage( "#Home2", { transition: "slideup"} );
+						$.mobile.changePage( "#Home", { transition: "slideup"} );
 						}
 					});
+					
+					jQuery("a.plan").fancybox();
+					
 			
 		};
 	return { initModule: initModule };

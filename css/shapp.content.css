@@ -24,7 +24,9 @@
     font-weight: normal;
     font-style: normal;
 }
-
+body {
+    -webkit-text-size-adjust: 100%;
+}
 .row{
    margin-right: 0px;
 }
@@ -49,6 +51,9 @@
 		background-size: auto 100%;  	
 	
 }
+
+
+	
 
 #logo-img {margin-top: 15px;}
 
@@ -96,8 +101,19 @@ color: black; text-align: left;margin-bottom: 50px
       color: black;
 }
 
-@media screen and (max-width: 767px) { #logo-img {width:25%; margin-right:auto; margin-left:auto; }
+@media screen and (max-width: 767px) { 
+	
+#logo-img {width:25%; margin-right:auto; margin-left:auto; }
  
+#Home h1{ font-size: 150% } 
+.no-handy{ display:none  }
+
+#Home p{ display:none }
+
+#Zirl h2 {font-size: 100%; left: 10%;}
+
+#Wohnungen h3 {font-size : 80%}
+
 	}
 @media screen and  (min-width: 768px) and (max-width: 979px) { #logo-img {width:25%; margin-right:auto; margin-left:auto; }
 

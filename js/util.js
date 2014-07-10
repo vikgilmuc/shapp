@@ -1,3 +1,7 @@
+            
+            
+            
+            
             ko.virtualElements.allowedBindings.jqmforeach = true;
             ko.bindingHandlers.jqmforeach = {
                 init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
