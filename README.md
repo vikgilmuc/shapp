@@ -4,7 +4,7 @@ shapp
 WebApp for smiley-homes.at
 v.0.0
 
-The idea of this WebApp is to take the content from a Joomla! throught a Web-Service component, 
+The idea of this WebApp is to take the content from a Joomla! throught a Web-Service AJAX component, 
 	parse into a JSON object and bind the content with knockout.
 
 The first commit is only HTML content
